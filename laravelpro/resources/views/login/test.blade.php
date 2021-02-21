@@ -21,6 +21,8 @@
     <h1>Login Page</h1>
 	@include('layout.inner')
 	<form method="post">
+		{{--  @csrf  --}}
+		{{ csrf_field() }}
 			<table>
 				<tr>
 					<td>Username</td>

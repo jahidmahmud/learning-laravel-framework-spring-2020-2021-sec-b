@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>welcome Home {{ $name }} | {{ $id }}</h1>
+    <h1>welcome Home</h1>
     <a href="/home/create">Create User</a>|
     <a href="/home/userlist">View UserList</a>|
     <a href="/logout">LogOut</a>

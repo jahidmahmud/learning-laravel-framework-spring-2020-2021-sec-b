@@ -9,6 +9,7 @@
 <body>
     <h1>Create User</h1>
 	<form method="post">
+		@csrf
 			<table>
 				<tr>
 					<td>UserId</td>
@@ -19,8 +20,21 @@
 					<td><input type="text" name="username"></td>
 				</tr>
 				<tr>
-					<td>Salary</td>
-					<td><input type="text" name="salary"></td>
+					<td>Email</td>
+					<td><input type="text" name="email"></td>
+				</tr>
+                <tr>
+					<td>Password</td>
+					<td><input type="text" name="password"></td>
+				</tr>
+                <tr>
+					<td>Type</td>
+					<td>
+                        <select name="type">
+                            <option value="admin">Admin</option>
+                            <option value="user">User</option>
+                        </select>
+                    </td>
 				</tr>
 				<tr>
 					<td></td>

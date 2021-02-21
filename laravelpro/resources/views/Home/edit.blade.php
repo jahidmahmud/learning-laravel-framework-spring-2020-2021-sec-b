@@ -9,18 +9,32 @@
 <body>
     <h1>Edit User</h1>
 	<form method="post">
+		@csrf
 			<table>
 				<tr>
 					<td>Id</td>
 					<td><input type="text" name="id" value="{{ $user['id'] }}"></td>
 				</tr>
 				<tr>
-					<td>Name</td>
-					<td><input type="text" name="name" value="{{ $user['name'] }}"></td>
+					<td>UserName</td>
+					<td><input type="text" name="username" value="{{ $user['username'] }}"></td>
 				</tr>
                 <tr>
-					<td>Salary</td>
-					<td><input type="text" name="salary" value="{{ $user['salary'] }}"></td>
+					<td>Email</td>
+					<td><input type="text" name="email" value="{{ $user['email'] }}"></td>
+				</tr>
+                <tr>
+					<td>Password</td>
+					<td><input type="text" name="password" value="{{ $user['password'] }}"></td>
+				</tr>
+                <tr>
+					<td>Type</td>
+					<td>
+                        <select name="type">
+                            <option value="admin" @if($user['type']=='admin') selected @endif >Admin</option>
+                            <option value="user" @if($user['type']=='user') selected @endif>User</option>
+                        </select>
+                    </td>
 				</tr>
 				<tr>
 					<td></td>

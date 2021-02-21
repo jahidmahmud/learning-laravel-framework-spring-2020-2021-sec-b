@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
+use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,11 +28,30 @@ Route::get('/', function () {
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'verify']);
 Route::get('/home', [HomeController::class, 'index']);
+Route::get('/home/userlist', [HomeController::class, 'userlist']);
+Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/home/create', [HomeController::class, 'create']);
 Route::get('/home/update/{id}', [HomeController::class, 'update']);
 Route::post('/home/update/{id}', [HomeController::class, 'updatedPost']);
 Route::post('/home/create', [HomeController::class, 'add']);
-Route::get('/home/userlist', [HomeController::class, 'userlist']);
-Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/home/delete/{id}', [HomeController::class, 'delete']);
 Route::get('home/userupdate/{id}', [HomeController::class, 'confirmDelete']);
+// Route::group(['middleware' => 'sess'], function () {
+//     Route::get('/home', [HomeController::class, 'index']);
+//     Route::get('/home/userlist', [HomeController::class, 'userlist']);
+//     Route::get('/logout', [LoginController::class, 'logout']);
+//     Route::get('/home/create', [HomeController::class, 'create']);
+//     Route::get('/home/update/{id}', [HomeController::class, 'update']);
+//     Route::post('/home/update/{id}', [HomeController::class, 'updatedPost']);
+//     Route::post('/home/create', [HomeController::class, 'add']);
+//     Route::get('/home/delete/{id}', [HomeController::class, 'delete']);
+//     Route::get('home/userupdate/{id}', [HomeController::class, 'confirmDelete']);
+// });
+// Route::group(['middleware' => 'adminverify'], function () {
+//     Route::get('/home/create', [HomeController::class, 'create']);
+//     Route::get('/home/update/{id}', [HomeController::class, 'update']);
+//     Route::post('/home/update/{id}', [HomeController::class, 'updatedPost']);
+//     Route::post('/home/create', [HomeController::class, 'add']);
+//     Route::get('/home/delete/{id}', [HomeController::class, 'delete']);
+//     Route::get('home/userupdate/{id}', [HomeController::class, 'confirmDelete']);
+// });

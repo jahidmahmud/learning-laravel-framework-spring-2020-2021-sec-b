@@ -15,22 +15,24 @@
     <table border="1" style="border-collapse: collapse">
         <tr>
             <td>Id</td>
-            <td>Name</td>
-            <td>salary</td>
-            <td>salary</td>
+            <td>UserName</td>
+            <td>Email</td>
+            <td>Password</td>
+            <td>Type</td>
+            <td>Action</td>
         </tr>
         @for($i=0;$i<count($userlist);$i++)
-        @if ($userlist[$i]['id']!='')
         <tr>
             <td>{{ $userlist[$i]['id'] }}</td>
-            <td>{{$userlist[$i]['name'] }}</td>
-            <td>{{$userlist[$i]['salary'] }}</td>
+            <td>{{$userlist[$i]['username'] }}</td>
+            <td>{{$userlist[$i]['email'] }}</td>
+            <td>{{$userlist[$i]['password'] }}</td>
+            <td>{{$userlist[$i]['type'] }}</td>
             <td>
                 <a href="/home/update/{{ $userlist[$i]['id'] }}">Edit</a>
                 <a href="/home/delete/{{ $userlist[$i]['id'] }}">Delete</a>
             </td>
-        </tr>            
-        @endif
+        </tr>
         @endfor
     </table>
 </body>
