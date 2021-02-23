@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Edit User</h1>
-	<form method="post">
+	<form method="post" action="{{ route('home.confirmedit',$user['id']) }}">
 		@csrf
 			<table>
 				<tr>

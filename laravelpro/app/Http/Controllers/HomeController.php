@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use PhpParser\Builder\Property;
 use App\Models\user;
+use Illuminate\Auth\Events\Validated;
+use Validator;
+use App\Http\Requests\UserRequest;
 
 class HomeController extends Controller
 {
@@ -32,8 +35,23 @@ class HomeController extends Controller
     {
         return view('home.create');
     }
-    public function add(Request $req)
+    public function add(UserRequest $req)
     {
+        // $this->validate($req, [
+        //     'username' => 'required',
+        //     'password' => 'required|min:5'
+        // ]);
+        // $req->validate([
+        //     'username' => 'required',
+        //     'password' => 'required|min:5'
+        // ]);
+        // $validation = validator::make($req->all(), [
+        //     'username' => 'required|max:5',
+        //     'email' => 'required'
+        // ]);
+        // if ($validation->fails()) {
+        //     return redirect()->route('home.create')->with('errors', $validation->errors())->withInput();
+        // }
         //$userlistarr = ['id' => $req->id, 'name' => $req->username, 'salary' => $req->salary];
         //array_push($this->userlist, $userlistarr);\
         $user = new user();
@@ -43,7 +61,8 @@ class HomeController extends Controller
         $user->password = $req->password;
         $user->type = $req->type;
         $user->save();
-        return redirect('/home/userlist');
+        //return redirect('/home/userlist');
+        return redirect()->route('home.list');
     }
     public function update($id)
     {
@@ -61,7 +80,7 @@ class HomeController extends Controller
         $user->password = $req->password;
         $user->type = $req->type;
         $user->save();
-        return redirect('/home/userlist');
+        return redirect()->route('home.list');
     }
     public function getUser()
     {
@@ -77,7 +96,7 @@ class HomeController extends Controller
     public function confirmDelete($id)
     {
         if (user::destroy($id)) {
-            return redirect('/home/userlist');
+            return redirect()->route('home.list');
         } else {
             return redirect('home/delete/' . $id);
         }

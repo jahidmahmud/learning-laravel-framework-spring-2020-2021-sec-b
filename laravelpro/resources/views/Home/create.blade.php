@@ -13,26 +13,26 @@
 			<table>
 				<tr>
 					<td>UserId</td>
-					<td><input type="number" name="id"></td>
+					<td><input type="number" name="id" value="{{ old('id') }}"></td>
 				</tr>
 				<tr>
 					<td>UserName</td>
-					<td><input type="text" name="username"></td>
+					<td><input type="text" name="username" value="{{ old('username') }}"></td>
 				</tr>
 				<tr>
 					<td>Email</td>
-					<td><input type="text" name="email"></td>
+					<td><input type="text" name="email" value="{{ old('email') }}"></td>
 				</tr>
                 <tr>
 					<td>Password</td>
-					<td><input type="text" name="password"></td>
+					<td><input type="text" name="password" value="{{ old('password') }}"></td>
 				</tr>
                 <tr>
 					<td>Type</td>
 					<td>
                         <select name="type">
-                            <option value="admin">Admin</option>
-                            <option value="user">User</option>
+                            <option value="admin" @if(old('type')=='admin') selected @endif>Admin</option>
+                            <option value="user" @if(old('type')=='user') selected @endif>User</option>
                         </select>
                     </td>
 				</tr>
@@ -42,5 +42,8 @@
 				</tr>
 			</table>
 	</form>
+    @foreach ($errors->all() as $item)
+        {{ $item }}<br>
+    @endforeach
 </body>
 </html>

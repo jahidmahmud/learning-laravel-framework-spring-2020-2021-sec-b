@@ -29,11 +29,11 @@ Route::get('/', function () {
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'verify']);
 Route::get('/home', [HomeController::class, 'index']);
-Route::get('/home/userlist', [HomeController::class, 'userlist']);
+Route::get('/home/userlist', [HomeController::class, 'userlist'])->name('home.list');
 Route::get('/logout', [LoginController::class, 'logout']);
-Route::get('/home/create', [HomeController::class, 'create']);
-Route::get('/home/update/{id}', [HomeController::class, 'update']);
-Route::post('/home/update/{id}', [HomeController::class, 'updatedPost']);
+Route::get('/home/create', [HomeController::class, 'create'])->name('home.create');
+Route::get('/home/update/{id}', [HomeController::class, 'update'])->name('home.edit');
+Route::post('/home/update/{id}', [HomeController::class, 'updatedPost'])->name('home.confirmedit');
 Route::post('/home/create', [HomeController::class, 'add']);
 Route::get('/home/delete/{id}', [HomeController::class, 'delete']);
 Route::get('home/userupdate/{id}', [HomeController::class, 'confirmDelete']);
