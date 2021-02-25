@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Create User</h1>
-	<form method="post">
+	<form method="post" enctype="multipart/form-data">
 		@csrf
 			<table>
 				<tr>
@@ -35,6 +35,10 @@
                             <option value="user" @if(old('type')=='user') selected @endif>User</option>
                         </select>
                     </td>
+				</tr>
+                <tr>
+					<td>File</td>
+					<td><input type="file" name="myfile"></td>
 				</tr>
 				<tr>
 					<td></td>

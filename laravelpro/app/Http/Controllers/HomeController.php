@@ -35,8 +35,30 @@ class HomeController extends Controller
     {
         return view('home.create');
     }
-    public function add(UserRequest $req)
+    public function details($id)
     {
+        $user = user::find($id);
+        return view('home.details')->with('user', $user);
+    }
+    public function add(Request $req)
+    {
+        if ($req->hasFile('myfile')) {
+            $files = $req->file('myfile');
+            echo $files->getClientOriginalName();
+            echo '<br>';
+            echo $files->getClientOriginalExtension();
+            $files->move('upload', $files->getClientOriginalName());
+            $user = new user();
+            $user->id = $req->id;
+            $user->username = $req->username;
+            $user->email = $req->email;
+            $user->password = $req->password;
+            $user->type = $req->type;
+            $user->image = $files->getClientOriginalName();
+            $user->save();
+            //return redirect('/home/userlist');
+            return redirect()->route('home.list');
+        }
         // $this->validate($req, [
         //     'username' => 'required',
         //     'password' => 'required|min:5'
@@ -54,15 +76,16 @@ class HomeController extends Controller
         // }
         //$userlistarr = ['id' => $req->id, 'name' => $req->username, 'salary' => $req->salary];
         //array_push($this->userlist, $userlistarr);\
-        $user = new user();
+        /*$user = new user();
         $user->id = $req->id;
         $user->username = $req->username;
         $user->email = $req->email;
         $user->password = $req->password;
         $user->type = $req->type;
+        $user->image = '';
         $user->save();
         //return redirect('/home/userlist');
-        return redirect()->route('home.list');
+        return redirect()->route('home.list');*/
     }
     public function update($id)
     {
