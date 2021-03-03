@@ -42,6 +42,12 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/addProduct', [ProductController::class, 'add'])->name('product.add');
         Route::post('/addProduct', [ProductController::class, 'addProduct'])->name('product.addProduct');
         Route::get('/existingProduct', [ProductController::class, 'existing'])->name('product.existing');
+        Route::post('/existingProduct/sort', [ProductController::class, 'sort'])->name('product.existing.sort');
+        Route::get('/existingProduct/edit/{id}', [ProductController::class, 'edit'])->name('product.existing.edit');
+        Route::post('/existingProduct/edit/{id}', [ProductController::class, 'editconfirm'])->name('product.existing.edit');
+        Route::get('/existingProduct/delete/{id}', [ProductController::class, 'delete'])->name('product.existing.delete');
+        Route::post('/existingProduct/delete/{id}', [ProductController::class, 'deleteconfirm'])->name('product.existing.delete');
+        Route::get('/existingProduct/details/{id}', [ProductController::class, 'details'])->name('product.existing.details');
         Route::get('/upcomingProduct', [ProductController::class, 'upcoming'])->name('product.upcoming');
     });
 

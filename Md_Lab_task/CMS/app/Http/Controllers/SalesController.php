@@ -18,6 +18,7 @@ class SalesController extends Controller
 {
     public function physicalStore()
     {
+        //jnhfudhsugfh
         $maxvaue = Physical_store_channel::max('total_price');
         $data = Physical_store_channel::where('total_price', $maxvaue)->get();
         $data1 = Physical_store_channel::whereDate('created_at', today())->get();

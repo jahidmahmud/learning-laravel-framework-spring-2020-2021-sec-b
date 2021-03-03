@@ -9,6 +9,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   </head>
   <body>
+      <div class="container">
+          <form action="{{ route('product.existing.sort') }}" method="POST">
+              @csrf
+        <select name="sort" id="">
+            <option value="date">Date</option>
+            <option value="quantity">Quantity</option>
+            <option value="category">Category</option>
+        </select>
+        <input type="submit" value="Sort">
+    </form>
+      </div>
+      <br>
+      <br>
     <table class="table table-bordered">
     <thead>
       <tr class="table-danger">
@@ -18,6 +31,7 @@
             <th scope="col">price</th>
             <th scope="col">Status</th>
             <th scope="col">Category Name</th>
+            <th scope="col">Actions</th>
       </tr>
       </thead>
       <tbody>
@@ -29,6 +43,11 @@
             <td>{{ $data->price }}</td>
             <td>{{ $data->status }}</td>
             <td>{{ $data->category_name }}</td>
+            <td>
+                <a href="{{ route('product.existing.edit',$data->id) }}">Edit</a>
+                <a href="{{ route('product.existing.delete',$data->id) }}">Delete</a>
+                <a href="{{ route('product.existing.details',$data->id) }}">Details</a>
+            </td>
         </tr>
         @endforeach
       </tbody>
