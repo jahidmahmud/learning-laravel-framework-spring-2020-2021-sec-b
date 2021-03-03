@@ -37,8 +37,12 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/vendor', [LoginController::class, 'vendorDashboard'])->name('user.dashboard');
     });
     Route::group(['prefix' => 'system/product_management'], function () {
-        Route::get('/addProduct', [ProductController::class, 'add'])->name('product.add');
+
         Route::get('/', [ProductController::class, 'index'])->name('product.index');
+        Route::get('/addProduct', [ProductController::class, 'add'])->name('product.add');
+        Route::post('/addProduct', [ProductController::class, 'addProduct'])->name('product.addProduct');
+        Route::get('/existingProduct', [ProductController::class, 'existing'])->name('product.existing');
+        Route::get('/upcomingProduct', [ProductController::class, 'upcoming'])->name('product.upcoming');
     });
 
     Route::group(['prefix' => 'system/sales'], function () {

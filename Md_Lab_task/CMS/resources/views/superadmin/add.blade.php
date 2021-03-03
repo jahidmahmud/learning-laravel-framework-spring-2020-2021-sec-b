@@ -1,5 +1,5 @@
 @include('superadmin.include.alert')
-<form action="{{ route('') }}" method="POST">
+<form action="{{ route('product.addProduct') }}" method="POST">
     @csrf
     <input type="text" name="product_name" placeholder="Product Name" value="{{ old('product_name') }}"><br>
     <input type="text" name="quantity" placeholder="Quantity" value="{{ old('quantity') }}"><br>
@@ -9,3 +9,4 @@
 
     <input  type="submit">
 </form>
+
