@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\vendor;
 use Validator;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\DB;
@@ -136,12 +137,14 @@ class ProductController extends Controller
     public function details($id)
     {
         $product = Product::find($id);
-        return view('superadmin.detailsform')->with('product', $product);
+        $data = vendor::find($product->vendor_id);
+        return view('superadmin.detailsform')->with('product', $product)->with('data', $data);
     }
     public function detailsup($id)
     {
         $product = Product::find($id);
-        return view('superadmin.detailsform')->with('product', $product);
+        $data = vendor::find($product->vendor_id);
+        return view('superadmin.detailsform')->with('product', $product)->with('data', $data);
     }
     public function sort(Request $req)
     {

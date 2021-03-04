@@ -16,6 +16,18 @@
         <td>{{ $product['status'] }}</td>
     </tr>
     <tr>
+        <td>Vendor Name</td>
+        <td>{{ $data['name'] }}</td>
+    </tr>
+    <tr>
+        <td>Vendor Phone</td>
+        <td>{{ $data['phone'] }}</td>
+    </tr>
+    <tr>
+        <td>Vendor Address</td>
+        <td>{{ $data['address'] }}</td>
+    </tr>
+    <tr>
         <td>Category</td>
         <td>{{ $product['category_name'] }}</td>
     </tr>
