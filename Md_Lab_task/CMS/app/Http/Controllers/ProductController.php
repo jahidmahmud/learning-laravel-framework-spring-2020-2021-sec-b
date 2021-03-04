@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Validator;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
@@ -61,6 +62,16 @@ class ProductController extends Controller
     }
     public function editconfirm($id, Request $req)
     {
+        $validation = validator::make($req->all(), [
+            'product_name' => 'required|min:5|max:30',
+            'quantity' => 'required',
+            'price' => 'required|min:0',
+            'status' => 'required',
+            'category_name' => 'required',
+        ]);
+        if ($validation->fails()) {
+            return Back()->with('errors', $validation->errors());
+        }
         $product = Product::find($id);
         $product->product_name = $req->product_name;
         $product->quantity = $req->quantity;
