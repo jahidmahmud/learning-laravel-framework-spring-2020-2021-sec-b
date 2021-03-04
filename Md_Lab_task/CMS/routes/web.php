@@ -49,6 +49,12 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/existingProduct/delete/{id}', [ProductController::class, 'deleteconfirm'])->name('product.existing.delete');
         Route::get('/existingProduct/details/{id}', [ProductController::class, 'details'])->name('product.existing.details');
         Route::get('/upcomingProduct', [ProductController::class, 'upcoming'])->name('product.upcoming');
+        Route::post('/upcomingProduct/sort', [ProductController::class, 'sortup'])->name('product.upcoming.sort');
+        Route::get('/upcomingProduct/edit/{id}', [ProductController::class, 'editup'])->name('product.upcoming.edit');
+        Route::post('/upcomingProduct/edit/{id}', [ProductController::class, 'editconfirmup'])->name('product.upcoming.edit');
+        Route::get('/upcomingProduct/delete/{id}', [ProductController::class, 'delete'])->name('product.upcoming.deleteup');
+        Route::post('/upcomingProduct/delete/{id}', [ProductController::class, 'deleteconfirmup'])->name('product.upcoming.delete');
+        Route::get('/upcomingProduct/details/{id}', [ProductController::class, 'detailsup'])->name('product.upcoming.details');
     });
 
     Route::group(['prefix' => 'system/sales'], function () {
