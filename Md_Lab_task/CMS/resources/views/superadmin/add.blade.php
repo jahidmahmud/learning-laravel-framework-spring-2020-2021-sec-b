@@ -5,6 +5,11 @@
     <input type="text" name="quantity" placeholder="Quantity" value="{{ old('quantity') }}"><br>
     <input type="text" name="price" placeholder="Price" value="{{ old('price') }}"><br>
     <input type="text" name="status" placeholder="Status" value="{{ old('status') }}"><br>
+    <select name="vendor" id="">
+        @foreach ($vendor as $item)
+        <option value="{{ $item->id }}">{{ $item->name }}</option>
+        @endforeach
+    </select><br>
     <input type="text" name="category_name" placeholder="Category Name" value="{{ old('category_name') }}"><br>
 
     <input  type="submit">

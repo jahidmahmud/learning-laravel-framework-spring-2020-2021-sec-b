@@ -21,7 +21,8 @@ class ProductController extends Controller
     public function add()
     {
         //return 'hello';
-        return view('superadmin.add');
+        $vendor = vendor::all();
+        return view('superadmin.add')->with('vendor', $vendor);
     }
     public function addProduct(Request $req)
     {
