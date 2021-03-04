@@ -90,6 +90,8 @@ class ProductController extends Controller
     {
         if (Product::destroy($id)) {
             return redirect()->route('product.existing');
+        } else {
+            return Back();
         }
     }
     public function details($id)
