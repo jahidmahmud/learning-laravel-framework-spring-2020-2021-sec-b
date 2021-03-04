@@ -27,10 +27,11 @@ class ProductController extends Controller
     public function addProduct(Request $req)
     {
         $validation = validator::make($req->all(), [
-            'product_name' => 'required',
+            'product_name' => 'required|min:5|max:30',
             'quantity' => 'required',
-            'price' => 'required',
+            'price' => 'required|min:0',
             'status' => 'required',
+            'vendor' => 'required',
             'category_name' => 'required',
         ]);
         if ($validation->fails()) {
@@ -41,6 +42,7 @@ class ProductController extends Controller
         $product->quantity = $req->quantity;
         $product->price = $req->price;
         $product->status = $req->status;
+        $product->vendor_id = $req->vendor;
         $product->category_name = $req->category_name;
         $product->save();
         return redirect()->route('product.index');
